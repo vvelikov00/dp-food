@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="bg" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="assets/favicon.ico" type="image/ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title><?php echo $title; ?></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+  </head>
+  <body class="w-full h-full min-h-screen bg-slate-800 p-2 px-10">
+    <?php include 'Views/' . $template . '.html'; ?>
+  </body>
+</html>

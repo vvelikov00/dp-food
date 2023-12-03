@@ -1,9 +1,17 @@
 <?php
   require_once realpath(__DIR__ . '/vendor/autoload.php');
-
+  require_once 'src/Controller.php';
+  require_once 'src/Template.php';
+  include 'src/DatabaseConnection.php';
+  include 'Models/Food.php';
+  include 'Controllers/homePage.php';
   $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
   $dotenv->load();
 
-  // Remove next line later
-  echo "Hello " . (@$_ENV['DB_USER'] ?? "User") . "!";
+  DatabaseConnection::connect();
+
+  $action = $_GET['action'] ?? 'index';
+
+  $homePageController = new HomePageController();
+  $homePageController->runAction($action);
 ?>

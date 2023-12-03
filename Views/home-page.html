@@ -1,0 +1,130 @@
+<div class="flex items-center mt-3">
+  <img src="assets/logo.png" alt="logo" class="w-16" />
+  <h3 class="text-4xl font-bold text-slate-200 ml-3">
+    <?php echo $title; ?>
+  </h3>
+</div>
+<div class="flex justify-center">
+  <div class="w-4/6 h-full flex flex-col">
+    <div class="relative inline-block text-left w-56 self-end" id="sort-area">
+      <div>
+        <button
+          id="sort-button"
+          type="button"
+          class="inline-flex w-full justify-between gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+          id="menu-button"
+          aria-expanded="true"
+          aria-haspopup="true"
+        >
+          <p id="sort-by">Сортиране по</p>
+          <svg
+            id="sort-icon"
+            class="-mr-1 h-5 w-5 text-gray-400"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        id="sort-menu"
+        class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden"
+        role="menu"
+        aria-orientation="vertical"
+        aria-labelledby="menu-button"
+        tabindex="-1"
+      >
+        <div class="py-1" role="none">
+          <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+          <div
+            class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+            role="menuitem"
+            tabindex="-1"
+            id="name-asc"
+          >
+            Име - Възходящ
+          </div>
+          <div
+            class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+            role="menuitem"
+            tabindex="-1"
+            id="name-desc"
+          >
+            Име - Низходящ
+          </div>
+          <div
+            class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+            role="menuitem"
+            tabindex="-1"
+            id="category-asc"
+          >
+            Категория - Възходящ
+          </div>
+          <div
+            class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+            role="menuitem"
+            tabindex="-1"
+            id="category-desc"
+          >
+            Категория - Низходящ
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php echo $table ?>
+  </div>
+</div>
+<script>
+  const button = document.getElementById("sort-button");
+  const sortBy = document.getElementById("sort-by");
+  const menu = document.getElementById("sort-menu");
+  const icon = document.getElementById("sort-icon");
+  const items = document.querySelectorAll("[role='menuitem']");
+  const sortArea = document.getElementById("sort-area");
+  const firstItem = items[0];
+  const lastItem = items[items.length - 1];
+
+  document.addEventListener("click", (e) => {
+    if (!sortArea.contains(e.target)) {
+      menu.classList.add("hidden");
+    }
+  });
+
+  button.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+    menu.classList.toggle("block");
+  });
+
+  button.addEventListener("keydown", (e) => {
+    if (e.code === "Space" || e.code === "Enter") {
+      e.preventDefault();
+      menu.classList.toggle("hidden");
+      menu.classList.toggle("block");
+      firstItem.focus();
+    }
+  });
+
+  lastItem.addEventListener("keydown", (e) => {
+    if (e.code === "Tab" && !e.shiftKey) {
+      e.preventDefault();
+      menu.classList.toggle("hidden");
+      menu.classList.toggle("block");
+      button.focus();
+    }
+  });
+
+  items.forEach((item, index) => {
+    item.addEventListener("click", () => {
+      console.log(item.innerHTML);
+      menu.classList.toggle("hidden");
+      menu.classList.toggle("block");
+      sortBy.innerHTML = item.innerHTML;
+    });
+  });
+</script>
