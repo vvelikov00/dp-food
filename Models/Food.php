@@ -1,7 +1,6 @@
 <?php
-
-class Food
-{
+require_once 'src/iDecorator.php';
+class Food implements iDecorator {
   private $dbc;
 
   public function __construct($dbc)
@@ -9,7 +8,7 @@ class Food
     $this->dbc = $dbc;
   }
 
-  public function all()
+  public function getData()
   {
     $sql = "SELECT * FROM foods";
     $stmt = $this->dbc->prepare($sql);
