@@ -9,6 +9,6 @@
 
     function view($template, $variables) {
       extract($variables);
-      include "Views/layout/$this->layout.html";
+      include "views/layout/$this->layout.html";
     }
   }

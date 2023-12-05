@@ -1,6 +1,6 @@
 <?php
-require_once 'src/iDecorator.php';
-class Food implements iDecorator {
+require_once 'src/iProxy.php';
+class Food implements iProxy {
   private $dbc;
 
   public function __construct($dbc)

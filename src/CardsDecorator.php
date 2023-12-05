@@ -1,6 +1,6 @@
 <?php
 require_once 'src/iDecorator.php';
-class CardsDecorator implements iDecorator{
+class CardsDecorator {
 
   private $data;
   public function __construct(iDecorator $data)
@@ -10,7 +10,7 @@ class CardsDecorator implements iDecorator{
 
   public function getData()
   {
-    $arr = $this->data->getData();
+    $arr = $this->data->sortData();
     $cards = '<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-10">';
     foreach($arr as $obj) {
       $cards .= '<div class="p-4 bg-slate-700 rounded-lg shadow-lg flex flex-col justify-between">';

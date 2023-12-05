@@ -1,6 +1,6 @@
 <?php
 require_once 'src/iDecorator.php';
-class TableDecorator implements iDecorator {
+class TableDecorator {
   private $data;
   public function __construct(iDecorator $data) {
     $this->data = $data;
@@ -10,14 +10,14 @@ class TableDecorator implements iDecorator {
     $table= '<table class="text-slate-200 mt-10 mb-5" >
       <thead class="shadow-lg" >
         <tr class="text-2xl rounded-xl" >
-          <th class="text-left p-2 bg-slate-700 rounded-tl-md" >Name</th>
-          <th class="text-left p-2 bg-slate-700 rounded-tr-md" >Category</th>
+          <th class="text-left p-2 bg-slate-700 rounded-tl-md" >Име</th>
+          <th class="text-left p-2 bg-slate-700 rounded-tr-md" >Категория</th>
         </tr>
       </thead>
       <tbody>';
 
       $i = 0;
-      $arr = $this->data->getData();
+      $arr = $this->data->sortData();
       foreach($arr as $obj) {
         $i++;
         $table .= '<tr class="text-lg ' . ($i % 2 ? "" : "bg-slate-600") .'" >';

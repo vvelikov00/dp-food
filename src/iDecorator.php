@@ -1,5 +1,5 @@
 <?php
 
   interface iDecorator {
-    public function getData();
+    public function sortData();
   }
