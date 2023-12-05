@@ -8,13 +8,15 @@
       $food = new Food($dbc);
       $view = $_GET['view'] ?? 'table';
       $sort = $_GET['sort'] ?? 'name-asc';
+      include 'src/SortProxy.php';
+      $proxy = new SortProxy($food, $sort);
       $decorator = null;
       if($view === 'table') {
         include 'src/TableDecorator.php';
-        $decorator = new TableDecorator($food);
+        $decorator = new TableDecorator($proxy);
       } else {
         include 'src/CardsDecorator.php';
-        $decorator = new CardsDecorator($food);
+        $decorator = new CardsDecorator($proxy);
       }
       
 

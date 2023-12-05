@@ -3,8 +3,8 @@
   require_once 'src/Controller.php';
   require_once 'src/Template.php';
   include 'src/DatabaseConnection.php';
-  include 'Models/Food.php';
-  include 'Controllers/homePage.php';
+  include 'models/Food.php';
+  include 'controllers/homePage.php';
   $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
   $dotenv->load();
 
