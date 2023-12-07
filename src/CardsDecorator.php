@@ -1,12 +1,14 @@
 <?php
 require_once 'src/iDecorator.php';
-class CardsDecorator {
+class CardsDecorator implements iDecorator {
 
   private $data;
   public function __construct(iDecorator $data)
   {
     $this->data = $data;
   }
+
+  public function sortData() {}
 
   public function getData()
   {

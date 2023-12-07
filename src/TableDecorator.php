@@ -1,10 +1,12 @@
 <?php
 require_once 'src/iDecorator.php';
-class TableDecorator {
+class TableDecorator implements iDecorator {
   private $data;
   public function __construct(iDecorator $data) {
     $this->data = $data;
   }
+
+  public function sortData() {}
 
   public function getData() {
     $table= '<table class="text-slate-200 mt-10 mb-5" >
